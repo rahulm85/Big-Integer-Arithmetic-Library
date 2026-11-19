@@ -1,48 +1,57 @@
-# Big Integer Arithmetic Library
+# Big Integer Arithmetic Library (C++)
 
-A C++ project demonstrating arbitrary-precision integer arithmetic using string-based digit storage.
+A standalone C++11 console application implementing arbitrary-precision signed integer addition, subtraction, and multiplication using decimal digit strings.
 
-## Project overview
+## Features
 
-The implementation represents large integer values as digit strings rather than relying on built-in integer limits. The documented operations include:
+- Stores magnitude as a decimal string, avoiding built-in integer-size limits.
+- Supports positive, negative, and zero values.
+- Implements addition, subtraction, and schoolbook multiplication.
+- Normalizes leading zeroes and prevents negative zero.
+- Rejects empty values, sign-only values, and non-digit input.
+- Includes a small assertion-based test program.
 
-- Addition
-- Subtraction with sign handling
-- Multiplication using the schoolbook algorithm
-- Removal of leading zeroes and normalization of negative zero
+## Files
 
-## Implementation notes
+- `BigInt.cpp`: BigInt class implementation and interactive console calculator.
+- `tests.cpp`: basic tests for arithmetic, signs, zero, large values, and invalid input.
 
-The original project describes a single-file C++ implementation with a `BigInt` class, arithmetic operators, and a simple interactive console menu.
+## Build and run
 
-## Build
-
-The original source project documents a standard C++ compilation flow:
+Requires a C++11-compatible compiler such as g++.
 
 ```bash
-g++ -std=c++11 -o bigint Big_Int.cpp
+g++ -std=c++11 -Wall -Wextra -pedantic BigInt.cpp -o bigint
 ./bigint
 ```
 
-The source file is not included in this repository yet; the command above applies once an authorized copy of `Big_Int.cpp` has been added.
+Enter expressions in the form `<integer> <operator> <integer>`:
 
-## Limitations noted by the original project
+```text
+> 999999999999999999999 + 1
+= 1000000000000000000000
+> -25 * 12
+= -300
+> 100 - 250
+= -150
+> q
+```
 
-- Division and modulus are not implemented.
-- Input validation for non-digit characters is not described.
-- Schoolbook multiplication has quadratic time complexity, O(n²).
+## Run tests
 
-## Original project and attribution
+```bash
+g++ -std=c++11 -Wall -Wextra -pedantic tests.cpp -o bigint_tests
+./bigint_tests
+```
 
-The original implementation is maintained by **kapujaganmohanreddy**:
+## Complexity
 
-- [Original GitHub repository](https://github.com/kapujaganmohanreddy/Big-Int)
+For operands with n and m digits, addition and subtraction are O(max(n,m)); schoolbook multiplication is O(n*m) time and O(n+m) auxiliary space.
 
-The original repository does not show a license file. Source code has therefore not been copied into this repository. Please obtain the author's permission or a suitable license before redistributing or modifying the original implementation.
+## Scope and limitations
 
-## Possible extensions
+Division, modulus, decimal/fractional values, and optimized multiplication algorithms are not implemented. This is an educational integer-arithmetic project, not a cryptographic library; do not use it as a production cryptographic primitive.
 
-- Add input validation and clearer error handling.
-- Add division and modulus.
-- Add automated tests for sign combinations, zero, leading zeroes, and large operands.
-- Separate the class interface, implementation, and test program.
+## Usage
+
+This project is provided as an independently written educational implementation. No source files from the earlier reference repository are copied here.
