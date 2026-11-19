@@ -1,5 +1,7 @@
 # Big Integer Arithmetic Library (C++)
 
+[![Build and test](https://github.com/rahulm85/Big-Integer-Arithmetic-Library/actions/workflows/ci.yml/badge.svg)](https://github.com/rahulm85/Big-Integer-Arithmetic-Library/actions/workflows/ci.yml)
+
 A standalone C++11 console application implementing arbitrary-precision signed integer addition, subtraction, and multiplication using decimal digit strings.
 
 ## Features
