@@ -152,6 +152,7 @@ public:
     }
 };
 
+#ifndef BIGINT_TEST_BUILD
 int main() {
     std::cout << "Big Integer Arithmetic Library (C++)\n";
     std::cout << "Supported operations: +, -, *\n";
@@ -188,3 +189,5 @@ int main() {
     }
     return 0;
 }
+
+#endif // BIGINT_TEST_BUILD
