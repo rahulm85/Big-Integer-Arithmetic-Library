@@ -1,0 +1,30 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build calculator
+        run: g++ -std=c++11 -Wall -Wextra -pedantic BigInt.cpp -o bigint
+
+      - name: Build tests
+        run: g++ -std=c++11 -Wall -Wextra -pedantic tests.cpp -o bigint_tests
+
+      - name: Run tests
+        run: ./bigint_tests
+
+      - name: Upload calculator binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: bigint-linux
+          path: bigint
