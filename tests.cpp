@@ -1,3 +1,4 @@
+#define BIGINT_TEST_BUILD
 #include <cassert>
 #include <iostream>
 #include "BigInt.cpp"
